@@ -10,7 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
 import dagger.hilt.android.AndroidEntryPoint
+import dev.easysouls.culinarycompass.presentation.beers.BeerScreen
+import dev.easysouls.culinarycompass.presentation.beers.BeerViewModel
 import dev.easysouls.culinarycompass.ui.theme.CulinaryCompassTheme
 
 @AndroidEntryPoint
@@ -24,25 +28,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val viewModel = hiltViewModel<BeerViewModel>()
+                    val beers = viewModel.beerPagingFlow.collectAsLazyPagingItems()
+                    BeerScreen(beers = beers)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CulinaryCompassTheme {
-        Greeting("Android")
     }
 }

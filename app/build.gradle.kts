@@ -96,11 +96,15 @@ dependencies {
     val roomVersion = "2.6.0-alpha03"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation ("androidx.room:room-migration:$roomVersion")
-    implementation ("androidx.room:room-paging:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
     testImplementation ("androidx.room:room-testing:$roomVersion")
     androidTestImplementation ("androidx.room:room-testing:$roomVersion")
+
+    // Paging 3
+    implementation("androidx.paging:paging-compose:3.2.0")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.0")
+    implementation ("androidx.room:room-paging:$roomVersion")
 
     // Kotlin Extensions and Coroutines support for Room
     implementation ("androidx.room:room-ktx:$roomVersion")
