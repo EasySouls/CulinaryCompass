@@ -1,6 +1,5 @@
 package dev.easysouls.culinarycompass.di
 
-import android.app.Application
 import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
@@ -15,7 +14,7 @@ import dev.easysouls.culinarycompass.data.beers.local.BeerDatabase
 import dev.easysouls.culinarycompass.data.beers.local.BeerEntity
 import dev.easysouls.culinarycompass.data.beers.remote.BeerApi
 import dev.easysouls.culinarycompass.data.beers.remote.BeerRemoteMediator
-import dev.easysouls.culinarycompass.data.freemealdb.FreeMealApi
+import dev.easysouls.culinarycompass.data.freemealdb.remote.FreeMealApi
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -65,7 +64,7 @@ object AppModule {
     @Singleton
     fun provideFreeMealRetrofitInstance(): FreeMealApi {
         return Retrofit.Builder()
-            .baseUrl("https://www.themealdb.com")
+            .baseUrl(FreeMealApi.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(FreeMealApi::class.java)
