@@ -112,6 +112,12 @@ dependencies {
     // Coil
     implementation ("io.coil-kt:coil-compose:2.4.0")
 
+    // Gson
+    implementation ("com.google.code.gson:gson:2.9.0")
+
+    // Timber
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+
     // Google Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
     implementation ("com.google.firebase:firebase-analytics-ktx")

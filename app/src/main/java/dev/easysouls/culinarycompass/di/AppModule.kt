@@ -15,6 +15,10 @@ import dev.easysouls.culinarycompass.data.beers.local.BeerEntity
 import dev.easysouls.culinarycompass.data.beers.remote.BeerApi
 import dev.easysouls.culinarycompass.data.beers.remote.BeerRemoteMediator
 import dev.easysouls.culinarycompass.data.freemealdb.remote.FreeMealApi
+import dev.easysouls.culinarycompass.data.recipes.local.DefaultRecipesRepository
+import dev.easysouls.culinarycompass.data.recipes.local.RecipesDao
+import dev.easysouls.culinarycompass.data.recipes.local.RecipesDatabase
+import dev.easysouls.culinarycompass.domain.recipes.repository.RecipesRepository
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -23,6 +27,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideRecipesRepository(db: RecipesDatabase): RecipesRepository {
+        return DefaultRecipesRepository(db.dao)
+    }
+
     @Provides
     @Singleton
     fun provideBeerDatabase(@ApplicationContext context: Context): BeerDatabase {
@@ -68,5 +79,15 @@ object AppModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(FreeMealApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRecipesDatabase(@ApplicationContext context: Context): RecipesDatabase {
+        return Room.databaseBuilder(
+            context,
+            RecipesDatabase::class.java,
+            "recipes.db"
+        ).build()
     }
 }
