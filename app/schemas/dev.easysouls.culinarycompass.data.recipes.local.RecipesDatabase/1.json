@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "945544f37c78c5e265002c2c5b1e24f4",
+    "identityHash": "7c6073b3629c4b876c6c5b62aaa18250",
     "entities": [
       {
         "tableName": "RecipeEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mealId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL DEFAULT 'Best food ever', `ingredients` TEXT NOT NULL, `measures` TEXT NOT NULL, `difficulty` INTEGER NOT NULL DEFAULT 4, `cooking_time` TEXT NOT NULL DEFAULT '420 minutes', `date_modified` TEXT DEFAULT NULL, `image_url` TEXT DEFAULT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mealId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL DEFAULT 'Best food ever', `ingredients` TEXT NOT NULL, `measures` TEXT NOT NULL, `difficulty` INTEGER NOT NULL DEFAULT 4, `cooking_time` TEXT NOT NULL DEFAULT '420 minutes', `date_modified` TEXT NOT NULL, `image_url` TEXT DEFAULT NULL)",
         "fields": [
           {
             "fieldPath": "mealId",
@@ -51,8 +51,7 @@
             "fieldPath": "dateModified",
             "columnName": "date_modified",
             "affinity": "TEXT",
-            "notNull": false,
-            "defaultValue": "NULL"
+            "notNull": true
           },
           {
             "fieldPath": "imageUrl",
@@ -75,7 +74,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '945544f37c78c5e265002c2c5b1e24f4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7c6073b3629c4b876c6c5b62aaa18250')"
     ]
   }
 }

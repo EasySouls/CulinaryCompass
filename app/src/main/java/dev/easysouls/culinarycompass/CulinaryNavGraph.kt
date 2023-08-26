@@ -40,13 +40,7 @@ fun CulinaryNavGraph(
         composable(
             CulinaryDestinations.HOME_ROUTE
         ) {
-            AppModalDrawer(
-                drawerState = drawerState,
-                currentRoute = currentRoute,
-                navigateActions = CulinaryNavigationActions(navController)
-            ) {
-                HomeScreen()
-            }
+            HomeScreen()
         }
         /*composable(
             CulinaryDestinations.TASKS_ROUTE,
