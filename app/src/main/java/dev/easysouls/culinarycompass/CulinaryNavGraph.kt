@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.easysouls.culinarycompass.presentation.HomeScreen
+import dev.easysouls.culinarycompass.presentation.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -39,7 +40,13 @@ fun CulinaryNavGraph(
         composable(
             CulinaryDestinations.HOME_ROUTE
         ) {
-            HomeScreen()
+            AppModalDrawer(
+                drawerState = drawerState,
+                currentRoute = currentRoute,
+                navigateActions = CulinaryNavigationActions(navController)
+            ) {
+                HomeScreen()
+            }
         }
         /*composable(
             CulinaryDestinations.TASKS_ROUTE,

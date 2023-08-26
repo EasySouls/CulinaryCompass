@@ -21,8 +21,8 @@ data class RecipeEntity(
     val difficulty: Int,
     @ColumnInfo(name = "cooking_time", defaultValue = "420 minutes")
     val cookingTime: String,
-    @ColumnInfo(name = "date_modified", defaultValue = "NULL")
-    val dateModified: DateTime?,
+    @ColumnInfo(name = "date_modified")
+    val dateModified: String,
     @ColumnInfo(name = "image_url", defaultValue = "NULL")
     val imageUrl: String?
 )
