@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -50,7 +50,7 @@ fun AppModalDrawer(
         drawerContent = {
             AppDrawer(
                 currentRoute = currentRoute,
-                navigateToTasks = { navigateActions.navigateToTasks() },
+                navigateToRecipes = { navigateActions.navigateToRecipes() },
                 navigateToStatistics = { navigateActions.navigateToStatistics() },
                 closeDrawer = { coroutineScope.launch { drawerState.close() } })
         }
@@ -58,22 +58,22 @@ fun AppModalDrawer(
         content()
     }
 }
+
 @Composable
 fun AppDrawer(
     currentRoute: String,
-    navigateToTasks: () -> Unit,
+    navigateToRecipes: () -> Unit,
     navigateToStatistics: () -> Unit,
     closeDrawer: () -> Unit,
-    modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.fillMaxSize()) {
+    ModalDrawerSheet {
         DrawerHeader()
         DrawerButton(
             painter = painterResource(id = R.drawable.ic_list),
             label = stringResource(id = R.string.list_title),
-            isSelected = currentRoute == CulinaryDestinations.TASKS_ROUTE,
+            isSelected = currentRoute == CulinaryDestinations.RECIPES_ROUTE,
             action = {
-                navigateToTasks()
+                navigateToRecipes()
                 closeDrawer()
             }
         )
@@ -163,7 +163,7 @@ fun PreviewAppDrawer() {
         Surface {
             AppDrawer(
                 currentRoute = CulinaryDestinations.TASKS_ROUTE,
-                navigateToTasks = {},
+                navigateToRecipes = {},
                 navigateToStatistics = {},
                 closeDrawer = {}
             )

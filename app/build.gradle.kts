@@ -72,7 +72,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended-android:1.5.0")
-    implementation("androidx.compose.material:material-pullrefresh:1.5.0")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.27.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -83,7 +82,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation ("androidx.test:runner:1.6.0-alpha03")
+    androidTestImplementation ("androidx.test:runner:1.6.0-alpha04")
     androidTestImplementation ("androidx.test:rules:1.6.0-alpha01")
 
     // Google Truth
@@ -91,12 +90,12 @@ dependencies {
     androidTestImplementation ("com.google.truth:truth:1.1.5")
 
     // Navigation
-    implementation ("androidx.navigation:navigation-compose:2.7.0")
+    implementation ("androidx.navigation:navigation-compose:2.7.1")
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
     // Room
-    val roomVersion = "2.6.0-alpha03"
+    val roomVersion = "2.6.0-beta01"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation ("androidx.room:room-migration:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
